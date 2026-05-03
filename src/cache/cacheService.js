@@ -1,0 +1,1 @@
+﻿const store = new Map(); function set(k,v,ttl=60000){ store.set(k,{v,exp:Date.now()+ttl}); } function get(k){ const e=store.get(k); if(!e||Date.now()>e.exp){store.delete(k);return null;} return e.v; } function clear(){ store.clear(); } module.exports={set,get,clear};
