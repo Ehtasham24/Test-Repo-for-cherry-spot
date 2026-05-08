@@ -1,0 +1,1 @@
+﻿function toCSV(tasks) { const header = 'id,title,status,assignee,createdAt'; const rows = tasks.map(t => [t.id,t.title,t.status,t.assignee,t.createdAt].join(',')); return [header,...rows].join('\n'); } module.exports = { toCSV };
