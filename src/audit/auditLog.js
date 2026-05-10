@@ -1,0 +1,1 @@
+﻿const log = []; function record(actor,action,taskId,meta={}){ log.push({ts:new Date().toISOString(),actor,action,taskId,...meta}); } function getLog(taskId){ return taskId?log.filter(e=>e.taskId===taskId):log; } module.exports={record,getLog};
