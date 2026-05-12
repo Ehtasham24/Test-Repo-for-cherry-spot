@@ -1,0 +1,1 @@
+﻿const tagMap = {}; function addTag(taskId,tag){ if(!tagMap[taskId])tagMap[taskId]=[]; if(!tagMap[taskId].includes(tag))tagMap[taskId].push(tag); } function getTags(taskId){ return tagMap[taskId]||[]; } function findByTag(tag){ return Object.keys(tagMap).filter(id=>tagMap[id].includes(tag)); } module.exports={addTag,getTags,findByTag};
