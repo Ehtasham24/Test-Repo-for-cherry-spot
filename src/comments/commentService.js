@@ -1,0 +1,1 @@
+﻿const comments=[]; function addComment(taskId,author,text){ const c={id:Date.now(),taskId,author,text,createdAt:new Date().toISOString()}; comments.push(c); return c; } function getComments(taskId){ return comments.filter(c=>c.taskId===taskId); } module.exports={addComment,getComments};
