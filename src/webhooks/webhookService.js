@@ -1,0 +1,1 @@
+﻿const hooks=[]; function register(url,events){ hooks.push({url,events}); } async function dispatch(event,payload){ for(const h of hooks){ if(h.events.includes(event)){ console.log('[WEBHOOK]',h.url,event,payload); } } } module.exports={register,dispatch};
