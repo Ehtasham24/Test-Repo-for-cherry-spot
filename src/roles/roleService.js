@@ -1,0 +1,1 @@
+﻿const roles={admin:['read','write','delete','admin'],editor:['read','write'],viewer:['read']}; function can(role,action){ return (roles[role]||[]).includes(action); } function assignRole(user,role){ user.role=role; return user; } module.exports={can,assignRole};
