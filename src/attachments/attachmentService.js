@@ -1,0 +1,1 @@
+﻿const attachments=[]; function attach(taskId,filename,size){ const a={id:Date.now(),taskId,filename,size,uploadedAt:new Date().toISOString()}; attachments.push(a); return a; } function getAttachments(taskId){ return attachments.filter(a=>a.taskId===taskId); } module.exports={attach,getAttachments};
