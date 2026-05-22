@@ -1,0 +1,1 @@
+﻿function completionRate(tasks){ const done=tasks.filter(t=>t.status==='done').length; return tasks.length?Math.round(done/tasks.length*100):0; } function throughput(tasks,days=7){ const cutoff=new Date(Date.now()-days*86400000).toISOString(); return tasks.filter(t=>t.status==='done'&&t.updatedAt>cutoff).length; } module.exports={completionRate,throughput};
