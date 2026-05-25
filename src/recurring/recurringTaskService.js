@@ -1,0 +1,1 @@
+﻿const recurring=[]; function schedule(template,intervalDays){ recurring.push({...template,intervalDays,lastRun:null}); } function getDue(){ const now=new Date(); return recurring.filter(r=>{ if(!r.lastRun) return true; return (now-new Date(r.lastRun))>=r.intervalDays*86400000; }); } module.exports={schedule,getDue};
