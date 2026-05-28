@@ -1,0 +1,1 @@
+﻿async function notifySlack(webhookUrl,message){ console.log('[SLACK]',webhookUrl,message); return {ok:true}; } async function taskAssigned(webhookUrl,task,assignee){ return notifySlack(webhookUrl,{text:Task ** assigned to }); } module.exports={notifySlack,taskAssigned};
