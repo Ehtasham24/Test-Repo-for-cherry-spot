@@ -1,0 +1,1 @@
+﻿const hits={}; function rateLimit(maxPerMinute=60){ return (req,res,next)=>{ const key=req.ip; const now=Date.now(); hits[key]=(hits[key]||[]).filter(t=>now-t<60000); if(hits[key].length>=maxPerMinute) return res.status(429).json({error:'Too many requests'}); hits[key].push(now); next(); }; } module.exports={rateLimit};
