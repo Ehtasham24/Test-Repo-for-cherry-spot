@@ -1,11 +1,14 @@
 const tasks = [];
 
-function createTask(title, description, assignee) {
+// Conflict test: this branch changes createTask differently from staging/TC-003
+function createTask(title, description, assignee, dueDate) {
+  if (!title) throw new Error('Title is required');
   const task = {
     id: Date.now(),
     title,
     description,
     assignee,
+    dueDate: dueDate || null,
     status: 'todo',
     createdAt: new Date().toISOString(),
   };
