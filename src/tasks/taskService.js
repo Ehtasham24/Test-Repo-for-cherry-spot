@@ -1,12 +1,18 @@
 const tasks = [];
+let nextId = 1;
+
+// CONFLICT COMMIT 1: adds nextId + status enum — conflicts with staging/TC-003
+// (TC-003 adds priority field; this version omits priority, uses different IDs approach)
+const STATUS = Object.freeze({ TODO: 'todo', IN_PROGRESS: 'in-progress', DONE: 'done' });
 
 function createTask(title, description, assignee) {
+  if (!title) throw new Error('Title is required');
   const task = {
-    id: Date.now(),
+    id: nextId++,
     title,
     description,
     assignee,
-    status: 'todo',
+    status: STATUS.TODO,
     createdAt: new Date().toISOString(),
   };
   tasks.push(task);
@@ -28,4 +34,4 @@ function updateTask(id, updates) {
   return task;
 }
 
-module.exports = { createTask, getTasks, updateTask };
+module.exports = { createTask, getTasks, updateTask, STATUS };
