@@ -1,3 +1,5 @@
+// CONFLICT COMMIT 2: changes widgets differently from staging/TC-004
+// (TC-004 adds overdue + priority widgets; this adds a stacked-bar widget instead)
 function getSummaryWidget(tasks) {
   return {
     total: tasks.length,
@@ -15,4 +17,13 @@ function getAssigneeWidget(tasks) {
   return map;
 }
 
-module.exports = { getSummaryWidget, getAssigneeWidget };
+function getStackedBarWidget(tasks) {
+  const bars = ['todo', 'in-progress', 'done'].map(status => ({
+    label: status,
+    count: tasks.filter(t => t.status === status).length,
+    pct: tasks.length ? Math.round(tasks.filter(t => t.status === status).length / tasks.length * 100) : 0,
+  }));
+  return { type: 'stacked-bar', bars };
+}
+
+module.exports = { getSummaryWidget, getAssigneeWidget, getStackedBarWidget };
